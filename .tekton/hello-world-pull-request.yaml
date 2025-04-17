@@ -2,17 +2,18 @@ apiVersion: tekton.dev/v1
 kind: PipelineRun
 metadata:
   annotations:
-    build.appstudio.openshift.io/repo: https://github.com/aelangov/hello-world?rev={{revision}}
+    build.appstudio.openshift.io/repo: https://github.com/Elaarun88/hello-world?rev={{revision}}
     build.appstudio.redhat.com/commit_sha: '{{revision}}'
+    build.appstudio.redhat.com/pull_request_number: '{{pull_request_number}}'
     build.appstudio.redhat.com/target_branch: '{{target_branch}}'
     pipelinesascode.tekton.dev/max-keep-runs: "3"
-    pipelinesascode.tekton.dev/on-cel-expression: event == "push" && target_branch
+    pipelinesascode.tekton.dev/on-cel-expression: event == "pull_request" && target_branch
       == "main"
   labels:
     appstudio.openshift.io/application: hello-world
     appstudio.openshift.io/component: hello-world
     pipelines.appstudio.openshift.io/type: build
-  name: hello-world-on-push
+  name: hello-world-on-pull-request
   namespace: oeo-cicada-tenant
 spec:
   params:
@@ -20,8 +21,10 @@ spec:
     value: Dockerfile
   - name: git-url
     value: '{{source_url}}'
+  - name: image-expires-after
+    value: 5d
   - name: output-image
-    value: quay.io/redhat-user-workloads/oeo-cicada-tenant/hello-world:{{revision}}
+    value: quay.io/redhat-user-workloads/oeo-cicada-tenant/hello-world:on-pr-{{revision}}
   - name: path-context
     value: .
   - name: revision
