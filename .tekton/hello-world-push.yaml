@@ -9,7 +9,7 @@ metadata:
     pipelinesascode.tekton.dev/on-cel-expression: event == "push" && target_branch
       == "main"
   labels:
-    appstudio.openshift.io/application: hello-world
+    appstudio.openshift.io/application: test-hello-world
     appstudio.openshift.io/component: hello-world
     pipelines.appstudio.openshift.io/type: build
   name: hello-world-on-push
