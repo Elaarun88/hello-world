@@ -21,7 +21,7 @@ spec:
   - name: git-url
     value: '{{source_url}}'
   - name: output-image
-    value: quay.io/redhat-user-workloads/rhn-support-bpratt-tenant/hello-world:{{revision}}
+    value: quay.io/redhat-user-workloads/oeo-cicada-tenant/hello-world:{{revision}}
   - name: path-context
     value: .
   - name: revision
