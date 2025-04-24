@@ -13,7 +13,7 @@ metadata:
     appstudio.openshift.io/component: hello-world
     pipelines.appstudio.openshift.io/type: build
   name: hello-world-on-push
-  namespace: oeo-cicada-tenant
+  namespace: docker-build-oci-ta
 spec:
   params:
   - name: dockerfile
@@ -21,7 +21,7 @@ spec:
   - name: git-url
     value: '{{source_url}}'
   - name: output-image
-    value: quay.io/redhat-user-workloads/oeo-cicada-tenant/hello-world:{{revision}}
+    value: quay.io/redhat-user-workloads/docker-build-oci-ta/hello-world:{{revision}}
   - name: path-context
     value: .
   - name: revision
