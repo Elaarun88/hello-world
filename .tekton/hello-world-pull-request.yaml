@@ -14,7 +14,7 @@ metadata:
     appstudio.openshift.io/component: hello-world
     pipelines.appstudio.openshift.io/type: build
   name: hello-world-on-pull-request
-  namespace: oeo-cicada-tenant
+  namespace: docker-build-oci-ta
 spec:
   params:
   - name: dockerfile
